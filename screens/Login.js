@@ -3,7 +3,7 @@ import { ActivityIndicator } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Formik } from 'formik';
-import { Container, InnerContainer, PageTitle, Colors, SubHeading, StyledButton, ButtonText, Line, ExtraView, ExtraText, TextLink, TextLinkContent } from '../components/styles';
+import { Container, InnerContainer, PageTitle, Colors, SubHeading, StyledButton, ButtonText, Line, ExtraView, TextLink, TextLinkContent, FormArea } from '../components/styles';
 import KeyboardAverseWrapper from '../components/KeyboardAverseWrapper';
 import { AgentContext } from '../components/AgentContext';
 import TextIconInput from '../components/TextIconInput';
@@ -56,7 +56,6 @@ const Login = ({ navigation }) => {
                                     onChangeText={handleChange('agentId')}
                                     onBlur={handleBlur('agentId')}
                                     value={values.agentId}
-                                    keyboardType='alphanumeric'
                                 />
                                 <TextIconInput
                                     label='Password'
