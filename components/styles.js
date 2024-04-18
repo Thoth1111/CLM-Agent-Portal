@@ -48,6 +48,7 @@ export const PageTitle = styled.Text`
     font-size: 24px;
     text-align: center;
     font-weight: bold;
+    margin-top: 50px;
     color: ${green};
     padding: 10px;
 `
@@ -65,28 +66,30 @@ export const AuthInputLabel = styled.Text`
     font-size: 13px;
     color: ${green};
     text-align: left;
+    margin-vertical: 10px;
 `
 export const AuthTextInput = styled.TextInput`
-    background-color: ${platinum};
+    background-color: ${white};
     padding-vertical: 15px;
     padding-horizontal: 55px;
+    border: ${jet};
     border-radius: 5px;
     font-size: 16px;
     color: ${jet};
     height: 50px;
-    margin-vertical: 3px;
+    margin-vertical: 6px;
     margin-bottom: 10px;
 `
 export const LeftIcon = styled.View`
     position: absolute;
     left: 15px;
-    top: 40px;
+    top: 55px;
     z-index: 1;
 `
 export const RightIcon = styled.TouchableOpacity`
     position: absolute;
     right: 15px;
-    top: 40px;
+    top: 55px;
     z-index: 1;
 `
 export const StyledButton = styled.TouchableOpacity`
@@ -100,8 +103,8 @@ export const StyledButton = styled.TouchableOpacity`
     height: 50px;
     shadow-color: #000;
     shadow-offset: {
-        width: 0,
-        height: 2,
+        width: 0;
+        height: 2;
     };
     shadow-opacity: 0.25;
     shadow-radius: 4px;
