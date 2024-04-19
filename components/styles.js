@@ -66,7 +66,7 @@ export const AuthInputLabel = styled.Text`
     font-size: 13px;
     color: ${green};
     text-align: left;
-    margin-vertical: 10px;
+    margin-top: 10px;
 `
 export const AuthTextInput = styled.TextInput`
     background-color: ${white};
@@ -83,13 +83,13 @@ export const AuthTextInput = styled.TextInput`
 export const LeftIcon = styled.View`
     position: absolute;
     left: 15px;
-    top: 55px;
+    top: 48px;
     z-index: 1;
 `
 export const RightIcon = styled.TouchableOpacity`
     position: absolute;
     right: 15px;
-    top: 55px;
+    top: 48px;
     z-index: 1;
 `
 export const StyledButton = styled.TouchableOpacity`
