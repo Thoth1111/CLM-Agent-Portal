@@ -18,7 +18,7 @@ const TextIconInput = ({ label, iconName, isPassword, hidePassword, setHidePassw
             <AuthTextInput {...props} />
             {isPassword && (
                 <RightIcon onPress={() => setHidePassword(!hidePassword)}>
-                    {hidePassword ? <EyeOff size={30} color={platinum} /> : <EyeOn size={30} color={platinum} />}
+                    {hidePassword ? <EyeOff size={30} color={platinum} /> : <EyeOn size={30} color={green} />}
                 </RightIcon>
             )}
         </View>
