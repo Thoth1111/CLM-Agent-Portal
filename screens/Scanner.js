@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { ActivityIndicator } from "react-native";
-import { CameraView, Camera } from "expo-camera/next";
+import { Camera } from "expo-camera";
+import { useCameraPermissions } from "expo-camera/next";
 import { ButtonText, CardView, Container, InnerContainer, Line, ScanView, Colors } from "../components/styles";
 import { AgentContext } from "../components/AgentContext";
 import { validateQrScan } from "../API/licenseRequests";
@@ -9,7 +10,9 @@ const { green } = Colors;
 
 const Scanner = ({ navigation }) => {
     const { agentData, setAgentData } = useContext(AgentContext);
-    const [hasPermission, setHasPermission] = useState(null);
+    const [permission, requestPermission] = useCameraPermissions();
+
+
     const [loading, setLoading] = useState(false);
     const [scanned, setScanned] = useState(false);
 
@@ -21,41 +24,33 @@ const Scanner = ({ navigation }) => {
     }
 
     useEffect(() => {
-        const getCameraPermissions = async () => {
-            const { status } = await Camera.requestCameraPermissionsAsync();
-            setHasPermission(status === 'granted');
-        };
-        getCameraPermissions();
+        requestPermission();
     }, []);
-
-
-    if (hasPermission === null) {
-        return <Text>Requesting camera permission...</Text>;
-    }
-    if (hasPermission === false) {
-        return <Text>No access to camera</Text>;
-    }
 
     return (
         <Container>
             <InnerContainer>
-                <ScanView>
-                    <CameraView
+                {permission === null || !permission.granted ? (
+                    <CardView onPress={requestPermission}>
+                        <ButtonText>Request Camera Permission</ButtonText>
+                    </CardView>
+                ) : (
+                    <Camera
                         onBarCodeScanned={scanned ? undefined : handleQRCodeScanned}
                         barcodeScannerSettings={{
                             barCodeTypes: ["qr"],
                         }}
-                    />
-                    {scanned && (
-                        <CardView onPress={() => setScanned(false)}>
-                            <ButtonText>Scan Again</ButtonText>
-                        </CardView>
-                    )}
-                    <Line />
-                    {loading && (
-                        <ActivityIndicator size="large" color={green} />
-                    )}
-                </ScanView>
+                    >
+                        {scanned && (
+                            <CardView onPress={() => setScanned(false)}>
+                                <ButtonText>Scan Again</ButtonText>
+                            </CardView>
+                        )}
+                        {loading && (
+                            <ActivityIndicator size="large" color={green} />
+                        )}
+                    </Camera>
+                )}
             </InnerContainer>
         </Container>
     );
