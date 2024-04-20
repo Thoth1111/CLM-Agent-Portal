@@ -18,6 +18,9 @@ const getLicenses = async (agentData, setLoading, dispatch, setAgentData) => {
             }
             console.log(err);
         })
+        .finally(() => {
+            setLoading(false);
+        })
 }
 
 const validateQrScan = async (agentData, qrID, setLoading, navigation, setAgentData) => {
