@@ -4,22 +4,22 @@ import Constants from 'expo-constants';
 const statusBarHeight = Constants.statusBarHeight;
 
 export const Colors = {
-    jet: "#353535ff",
+    jet: "#353535",
     amber: "#FFA07A",
-    white: "#ffffffff",
-    platinum: "#d9d9d9ff",
+    white: "#ffffff",
+    platinum: "#d9d9d9",
     red: "#FF0000",
     green: "#013D1E",
     yellow: "#FFCA0A",
     lime: "#32CD32"
 };
 
-const { jet, white, platinum, red, green, yellow, lime } = Colors;
+const { jet, white, platinum, green, yellow } = Colors;
 
 export const Container = styled.View`
     flex: 1;
     padding: 20px;
-    padding-top: ${statusBarHeight}px;
+    padding-top: ${statusBarHeight + 30}px;
     background-color: ${white};
 `
 export const InnerContainer = styled.View`
@@ -48,7 +48,6 @@ export const PageTitle = styled.Text`
     font-size: 24px;
     text-align: center;
     font-weight: bold;
-    margin-top: 50px;
     color: ${green};
     padding: 10px;
 `
@@ -148,7 +147,7 @@ export const CardContainer = styled.View`
     justify-content: center;
     margin-vertical: 10px;
     align-items: center;
-    height" fit-content;
+    height: fit-content;
 `
 export const CardView = styled.TouchableOpacity`
     background-color: ${yellow};
@@ -196,7 +195,7 @@ export const ListContainer = styled.TouchableOpacity`
     margin: 2px;
 `
 export const SectionView = styled.View`
-    width: 15%;
+    width: 30%;
     height: 100%;
     justify-content: center;
     align-items: center;
@@ -205,7 +204,7 @@ export const MidSectionView = styled.View`
     width: 70%;
     height: fit-content;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
 `
 export const SectionText = styled.Text`
     font-size: 14px;
@@ -214,6 +213,7 @@ export const SectionText = styled.Text`
 `
 export const SectionDate = styled.Text`
     font-size: 14px;
+    font-weight: bold;
     color: ${props => props.color ? props.color : jet};
 `
 export const SidedTable = styled.View`
@@ -317,4 +317,21 @@ export const ScanView = styled.View`
     flex: 1;
     justify-content: center;
     align-items: center;
+`
+export const RowedView = styled.View`
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+`
+export const RefreshView = styled.View`
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin-left: 10px;
+    margin-vertical: 10px;
+    padding: 5px;
+    border: ${green};
+    background-color: ${white};
+    border-radius: 5px;
 `
