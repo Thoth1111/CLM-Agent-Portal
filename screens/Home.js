@@ -2,16 +2,18 @@ import React, { useEffect, useCallback, useContext, useState } from 'react';
 import { ActivityIndicator } from 'react-native';
 import { AgentContext } from '../components/AgentContext';
 import { useDispatch, useSelector } from 'react-redux';
-import { Container, InnerContainer, Colors, Line, CardContainer, CardView, CardTitle, ListsView } from '../components/styles';
+import { Container, InnerContainer, SubHeading, Colors, Line, CardContainer, CardView, CardTitle, ListsView, RowedView, RefreshView } from '../components/styles';
 import { getLicenses } from '../API/licenseRequests';
 import { expiredLicenses } from '../redux/selectors';
 import LicenseList from '../components/LicenseList';
+import * as Icon from 'react-native-feather';
 import { StatusBar } from 'expo-status-bar';
-const { jet, platinum, green } = Colors;
+const { green } = Colors;
 
 const Home = ({ navigation }) => {
     const [loading, setLoading] = useState(false);
     const { agentData, setAgentData } = useContext(AgentContext);
+    console.log(agentData);
     const dispatch = useDispatch();
     const expired = useSelector(expiredLicenses);
 
@@ -30,7 +32,7 @@ const Home = ({ navigation }) => {
 
     return (
         <Container>
-            <StatusBar style='dark' />
+            <StatusBar style="dark" />
             <InnerContainer>
                 <CardContainer>
                     <Line />
@@ -38,29 +40,30 @@ const Home = ({ navigation }) => {
                         <CardTitle>Cautions</CardTitle>
                     </CardView>
                     <CardView onPress={() => navigation.navigate('Scanner')}>
-                        <CardTitle>Scan License</CardTitle>
+                        <CardTitle>Scanner</CardTitle>
                     </CardView>
                     <CardView onPress={() => navigation.navigate('Account')}>
                         <CardTitle>Account</CardTitle>
                     </CardView>
-                    <CardView onPress={handleRefresh}>
-                        <CardTitle>Refresh</CardTitle>
-                    </CardView>
                     <Line />
                 </CardContainer>
                 <ListsView>
-                    <subHeading color={green} >Expired Licenses</subHeading>
+                    <RowedView>
+                        <SubHeading color={green} onPress={handleRefresh}>Expired Licenses</SubHeading>
+                        <RefreshView>
+                            <Icon.RefreshCw size={30} color={green} />
+                        </RefreshView>
+                    </RowedView>
                     {loading ? (
-                        <ActivityIndicator size='large' color={platinum} />
+                        <ActivityIndicator size="large" color={green} />
                     ) : (
                         <>
                             {expired.length > 0 && expired.map((license, i) => (
                                 <LicenseList
                                     key={i}
                                     businessName={license.business_name}
-                                    businessNumber={license.business_id}
                                     _id={license._id}
-                                    expiryDate={license.expiryDate}
+                                    expiryDate={license.expiry_date}
                                     navigation={navigation}
                                 />
                             ))}
