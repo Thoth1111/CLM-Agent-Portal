@@ -13,7 +13,6 @@ const { green } = Colors;
 const Home = ({ navigation }) => {
     const [loading, setLoading] = useState(false);
     const { agentData, setAgentData } = useContext(AgentContext);
-    console.log(agentData);
     const dispatch = useDispatch();
     const expired = useSelector(expiredLicenses);
 
@@ -49,8 +48,8 @@ const Home = ({ navigation }) => {
                 </CardContainer>
                 <ListsView>
                     <RowedView>
-                        <SubHeading color={green} onPress={handleRefresh}>Expired Licenses</SubHeading>
-                        <RefreshView>
+                        <SubHeading color={green}>Expired Licenses</SubHeading>
+                        <RefreshView onPress={handleRefresh}>
                             <Icon.RefreshCw size={30} color={green} />
                         </RefreshView>
                     </RowedView>
