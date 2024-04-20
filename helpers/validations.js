@@ -1,5 +1,5 @@
-export const validAgentId = (agentId) => {
-    if (agentId.length < 5) {        
+export const validAgentId = (agent_id) => {
+    if (agent_id.length < 5) {        
         console.log('Agent ID must be at least 5 characters long');
         return false;
     }
