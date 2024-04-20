@@ -11,7 +11,7 @@ import TextIconInput from '../components/TextIconInput';
 import { loginAgent } from '../API/agentRequests.js';
 import { validPassword, validAgentId } from '../helpers/validations.js';
 
-const { platinum, green } = Colors;
+const { green } = Colors;
 
 const Login = ({ navigation }) => {
     const [hidePassword, setHidePassword] = useState(true);
@@ -30,7 +30,7 @@ const Login = ({ navigation }) => {
     }
 
     const handleLogin = (values) => {
-        if (validAgentId(values.agentId) && validPassword(values.password)) {
+        if (validAgentId(values.agent_id) && validPassword(values.password)) {
             setLoading(true);
             loginAgent(values, setLoading, sessionPersist)
         }
@@ -45,7 +45,7 @@ const Login = ({ navigation }) => {
                     <PageTitle>AGENT PORTAL</PageTitle>
                     <SubHeading>Sign In</SubHeading>
                     <Formik
-                        initialValues={{ agentId: '', password: '' }}
+                        initialValues={{ agent_id: '', password: '' }}
                         onSubmit={(values) => handleLogin(values)}
                     >
                         {({ handleChange, handleBlur, handleSubmit, values }) => (
@@ -53,9 +53,9 @@ const Login = ({ navigation }) => {
                                 <TextIconInput
                                     label='Agent ID'
                                     iconName='User'
-                                    onChangeText={handleChange('agentId')}
-                                    onBlur={handleBlur('agentId')}
-                                    value={values.agentId}
+                                    onChangeText={handleChange('agent_id')}
+                                    onBlur={handleBlur('agent_id')}
+                                    value={values.agent_id}
                                 />
                                 <TextIconInput
                                     label='Password'
