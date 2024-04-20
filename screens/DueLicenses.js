@@ -1,4 +1,5 @@
 import React from 'react'
+import { View } from 'react-native'
 import { useSelector } from 'react-redux'
 import {
     Container, InnerContainer, SubHeading, ListsView, Colors
@@ -13,19 +14,20 @@ const DueLicenses = ({ navigation }) => {
 
     return (
         <Container >
-            <InnerContainer>
+            <InnerContainer>                    
+                <SubHeading color={green} >Due within 30 days</SubHeading>
                 <ListsView>
-                    <SubHeading color={green} >Saved Licenses</SubHeading>
-                    {onCaution.length > 0 && onCaution.map((license, i) => (
-                        <LicenseList
-                            key={i}
-                            businessName={license.business_name}
-                            businessNumber={license.business_id}
-                            _id={license._id}
-                            expiryDate={license.expiryDate}
-                            navigation={navigation}
-                        />
-                    ))}
+                    <View style={{ marginTop: '20px'}}>
+                        {onCaution.length > 0 && onCaution.map((license, i) => (
+                            <LicenseList
+                                key={i}
+                                businessName={license.business_name}
+                                _id={license._id}
+                                expiryDate={license.expiryDate}
+                                navigation={navigation}
+                            />
+                        ))}
+                    </View>
                 </ListsView>
             </InnerContainer>
         </Container >
