@@ -4,10 +4,10 @@ import { formatDate } from '../helpers/dateFormatter';
 
 const { jet, red, green } = Colors;
 
-const LicenseList = ({ _id, businessName, businessNumber, expiryDate, navigation  }) => {
+const LicenseList = ({ _id, businessName, expiryDate, navigation  }) => {
 
     const handleLicenseSelection = (_id) => {
-        navigation.navigate('SelectLicense', { _id: _id });
+        navigation.navigate('SelectedLicense', { _id: _id });
     }
 
     return (
@@ -18,9 +18,6 @@ const LicenseList = ({ _id, businessName, businessNumber, expiryDate, navigation
                 <MidSectionView>
                     <SectionText color={green}>{businessName.toUpperCase()}</SectionText>
                 </MidSectionView>
-                <SectionView>
-                    <SectionText color={jet}>{businessNumber}</SectionText>
-                </SectionView>
         </ListContainer>
     )
 }
