@@ -24,7 +24,7 @@ const getLicenses = async (agentData, setLoading, dispatch, setAgentData) => {
 }
 
 const validateQrScan = async (agentData, qrID, setLoading, navigation, setAgentData) => {
-    await axios.post('https://clm-server.onrender.com/agent/scan/',{qrID: qrID},
+    await axios.post('https://clm-server.onrender.com/agent/scan/',{qr_code_id: qrID},
         {
             headers: {
                 Authorization: agentData.refreshToken
