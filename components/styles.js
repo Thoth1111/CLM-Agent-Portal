@@ -313,10 +313,11 @@ export const BannerSubTitle = styled.Text`
     font-weight: bold;
     color: ${green};
 `
-export const ScanView = styled.View`
-    flex: 1;
-    justify-content: center;
-    align-items: center;
+export const ActionText = styled.Text`
+    font-size: 18px;
+    color: ${jet};
+    padding: 5px;
+    margin-vertical: 10px;
 `
 export const RowedView = styled.View`
     flex-direction: row;
@@ -324,7 +325,7 @@ export const RowedView = styled.View`
     align-items: center;
     width: 100%;
 `
-export const RefreshView = styled.View`
+export const RefreshView = styled.TouchableOpacity`
     justify-content: center;
     align-items: center;
     width: fit-content;
